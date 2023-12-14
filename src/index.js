@@ -7,17 +7,19 @@ function refreshWeather(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind-speed");
   let timeElement = document.querySelector("#time");
-  let date = new Date(response.data.time * 1000);
+   let date = new Date(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
 
   //console.log(response.data.condition.description);
-  console.log(response.data);
-
+  //console.log(response.data);
+  
   cityElement.innerHTML = response.data.city;
   timeElement.innerHTML = formatDate(date);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
   tempElement.innerHTML = Math.round(temp);
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
 }
 
 function formatDate(date) {
